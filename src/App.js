@@ -1,17 +1,23 @@
 import Header from "./components/Header";
 import FormContainer from "./components/FormContainer";
 import ResultsContainer from "./components/ResultsContainer";
+import { useState } from "react";
 
 function App() {
+  const [savedUserInputs, setSavedUserInputs] = useState();
+  const saveUserInputsHandler = (userInputs) => {
+    setSavedUserInputs(userInputs);
+  };
+
   return (
     <div>
       <Header />
-      <FormContainer />
+      <FormContainer onSaveUserInputs={saveUserInputsHandler} />
 
       {/* Todo: Show below table conditionally (only once result data is available) */}
       {/* Show fallback text if no data is available */}
 
-      <ResultsContainer />
+      <ResultsContainer userInputsList={savedUserInputs} />
     </div>
   );
 }
