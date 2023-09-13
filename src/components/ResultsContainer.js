@@ -13,14 +13,14 @@ const ResultsContainer = (props) => {
         </tr>
       </thead>
       <tbody>
-        {/* {props.userInputsList.map((stats) => {
+        {props.userInputsList.map((stats) => {
           <Result
             currentSavings={stats.currentSavings}
             yearlyContribution={stats.yearlyContribution}
             expectedReturn={stats.expectedReturn}
             duration={stats.duration}
           />;
-        })} */}
+        })}
       </tbody>
     </table>
   );
