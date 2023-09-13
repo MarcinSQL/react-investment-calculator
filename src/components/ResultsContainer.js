@@ -2,7 +2,6 @@ import Result from "./Result";
 
 const ResultsContainer = (props) => {
   const yearlyData = []; // per-year results
-  let totalInterest = 0;
 
   // let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
   // const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
@@ -11,16 +10,17 @@ const ResultsContainer = (props) => {
 
   props.userInputsList.map((data) => {
     for (let i = 0; i < data.duration; i++) {
+      const initialInvestment = data.currentSavings;
       const yearlyInterest = data.currentSavings * data.expectedReturn;
       data.currentSavings += yearlyInterest + data.yearlyContribution;
-      totalInterest += yearlyInterest;
       yearlyData.push({
         // feel free to change the shape of the data pushed to the array!
+        id: Math.random().toString(),
         year: i + 1,
         yearlyInterest: yearlyInterest,
         savingsEndOfYear: data.currentSavings,
-        totalInterest: totalInterest,
         yearlyContribution: data.yearlyContribution,
+        initialInvestment: initialInvestment,
       });
     }
   });
@@ -41,14 +41,16 @@ const ResultsContainer = (props) => {
         </tr>
       </thead>
       <tbody>
-        {yearlyData.map((stats) => {
+        {yearlyData.map((item) => {
+          return (
           <Result
-            year={stats.year}
-            yearlyInterest={stats.yearlyInterest}
-            savingsEndOfYear={stats.savingsEndOfYear}
-            totalInterest={stats.totalInterest}
-            yearlyContribution={stats.yearlyContribution}
-          />;
+            key={item.id}
+            year={item.year}
+            yearlyInterest={item.yearlyInterest}
+            initialInvestment={item.initialInvestment}
+            savingsEndOfYear={item.savingsEndOfYear}
+            yearlyContribution={item.yearlyContribution}
+          />);
         })}
       </tbody>
     </table>

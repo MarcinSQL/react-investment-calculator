@@ -6,13 +6,8 @@ import { useState } from "react";
 function App() {
   const [userData, setUserData] = useState([]);
   const saveUserInputsHandler = (userInputs) => {
-    const userInputsData = {
-      ...userInputs,
-      id: Math.random().toString()
-    }
-
     setUserData((prevUserData) => {
-      return [userInputsData, ...prevUserData];
+      return [userInputs, ...prevUserData];
     })
   };
 
