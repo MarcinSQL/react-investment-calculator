@@ -4,9 +4,13 @@ import ResultsContainer from "./components/ResultsContainer";
 import { useState } from "react";
 
 function App() {
-  const [savedUserInputs, setSavedUserInputs] = useState();
+  const [savedUserInputs, setSavedUserInputs] = useState("");
   const saveUserInputsHandler = (userInputs) => {
-    setSavedUserInputs(userInputs);
+    const userInputsData = {
+      ...userInputs,
+      id: Math.random().toString()
+    }
+    setSavedUserInputs(userInputsData);
   };
 
   return (

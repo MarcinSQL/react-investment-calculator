@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 const FormContainer = (props) => {
-  const [enteredCurrentSavings, setEnteredCurrentSavings] = useState();
-  const [enteredYearlyContribution, setEnteredYearlyContribution] = useState();
-  const [enteredExpectedReturn, setEnteredExpectedReturn] = useState();
-  const [enteredDuration, setEnteredDuration] = useState();
+  const [enteredCurrentSavings, setEnteredCurrentSavings] = useState("");
+  const [enteredYearlyContribution, setEnteredYearlyContribution] = useState("");
+  const [enteredExpectedReturn, setEnteredExpectedReturn] = useState("");
+  const [enteredDuration, setEnteredDuration] = useState("");
 
   const currentSavingsChangeHandler = (e) => {
     setEnteredCurrentSavings(e.target.value);
@@ -30,6 +30,8 @@ const FormContainer = (props) => {
       expectedReturn: +enteredExpectedReturn / 100,
       duration: +enteredDuration,
     };
+
+    props.onSaveUserInputs(userInputs);
 
     const yearlyData = []; // per-year results
 
