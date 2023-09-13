@@ -1,11 +1,11 @@
 const Result = (props) => {
     return (
         <tr>
-          <td>YEAR NUMBER</td>
-          <td>TOTAL SAVINGS END OF YEAR</td>
-          <td>INTEREST GAINED IN YEAR</td>
-          <td>TOTAL INTEREST GAINED</td>
-          <td>TOTAL INVESTED CAPITAL</td>
+          <td>{props.year}</td>
+          <td>{props.savingsEndOfYear}</td>
+          <td>{props.yearlyInterest}</td>
+          <td>{props.totalInterest}</td>
+          <td>{props.yearlyContribution}</td>
         </tr>
     )
 }
