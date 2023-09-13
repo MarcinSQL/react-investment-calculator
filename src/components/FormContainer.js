@@ -54,6 +54,13 @@ const FormContainer = (props) => {
     // do something with yearlyData ...
   };
 
+  const resetHandler = () => {
+    setEnteredCurrentSavings('');
+    setEnteredYearlyContribution('');
+    setEnteredExpectedReturn('');
+    setEnteredDuration('');
+  }
+
   return (
     <form className="form" onSubmit={calculateHandler}>
       <div className="input-group">
@@ -99,7 +106,7 @@ const FormContainer = (props) => {
         </p>
       </div>
       <p className="actions">
-        <button type="reset" className="buttonAlt">
+        <button type="reset" onClick={resetHandler} className="buttonAlt">
           Reset
         </button>
         <button type="submit" className="button">
