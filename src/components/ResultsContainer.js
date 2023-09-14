@@ -3,30 +3,29 @@ import Result from "./Result";
 const ResultsContainer = (props) => {
   const yearlyData = []; // per-year results
 
-  // let currentSavings = +userInput["current-savings"]; // feel free to change the shape of this input object!
-  // const yearlyContribution = +userInput["yearly-contribution"]; // as mentioned: feel free to change the shape...
-  // const expectedReturn = +userInput["expected-return"] / 100;
-  // const duration = +userInput["duration"];
-
-  props.userInputsList.map((data) => {
-    for (let i = 0; i < data.duration; i++) {
-      const initialInvestment = data.currentSavings;
-      const yearlyInterest = data.currentSavings * data.expectedReturn;
-      data.currentSavings += yearlyInterest + data.yearlyContribution;
-      yearlyData.push({
-        // feel free to change the shape of the data pushed to the array!
-        id: Math.random().toString(),
-        year: i + 1,
-        yearlyInterest: yearlyInterest,
-        savingsEndOfYear: data.currentSavings,
-        yearlyContribution: data.yearlyContribution,
-        initialInvestment: initialInvestment,
-      });
-    }
-  });
+  let currentSavings = props.userInputsList.currentSavings;
+  const yearlyContribution = props.userInputsList.yearlyContribution;
+  const expectedReturn = props.userInputsList.expectedReturn;
+  const duration = props.userInputsList.duration;
+  const initialInvestment = props.userInputsList.currentSavings;
 
   if (props.userInputsList.length === 0) {
     return <p>No investment calculated yet.</p>;
+  } else {
+    for (let i = 0; i < duration; i++) {
+      const yearlyInterest =
+        currentSavings * expectedReturn;
+        currentSavings +=
+        yearlyInterest + yearlyContribution;
+      yearlyData.push({
+        id: Math.random().toString(),
+        year: i + 1,
+        yearlyInterest: yearlyInterest,
+        savingsEndOfYear: currentSavings,
+        yearlyContribution: yearlyContribution,
+        initialInvestment: initialInvestment,
+      });
+    }
   }
 
   return (
@@ -43,14 +42,15 @@ const ResultsContainer = (props) => {
       <tbody>
         {yearlyData.map((item) => {
           return (
-          <Result
-            key={item.id}
-            year={item.year}
-            yearlyInterest={item.yearlyInterest}
-            initialInvestment={item.initialInvestment}
-            savingsEndOfYear={item.savingsEndOfYear}
-            yearlyContribution={item.yearlyContribution}
-          />);
+            <Result
+              key={item.id}
+              year={item.year}
+              yearlyInterest={item.yearlyInterest}
+              initialInvestment={item.initialInvestment}
+              savingsEndOfYear={item.savingsEndOfYear}
+              yearlyContribution={item.yearlyContribution}
+            />
+          );
         })}
       </tbody>
     </table>

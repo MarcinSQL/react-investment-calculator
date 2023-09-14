@@ -6,19 +6,12 @@ import { useState } from "react";
 function App() {
   const [userData, setUserData] = useState([]);
   const saveUserInputsHandler = (userInputs) => {
-    setUserData((prevUserData) => {
-      return [userInputs, ...prevUserData];
-    })
+    setUserData(userInputs);
   };
-
   return (
     <div>
       <Header />
       <FormContainer onSaveUserInputs={saveUserInputsHandler} />
-
-      {/* Todo: Show below table conditionally (only once result data is available) */}
-      {/* Show fallback text if no data is available */}
-
       <ResultsContainer userInputsList={userData} />
     </div>
   );

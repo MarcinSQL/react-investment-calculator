@@ -21,9 +21,7 @@ const FormContainer = (props) => {
 
   const calculateHandler = (event) => {
     event.preventDefault();
-    // Should be triggered when form is submitted
-    // You might not directly want to bind it to the submit event on the form though...
-
+    
     const userInputs = {
       currentSavings: +enteredCurrentSavings,
       yearlyContribution: +enteredYearlyContribution,
