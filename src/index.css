@@ -97,6 +97,10 @@ button:hover {
   color: #91e1d0;
 }
 
+.resultNone{
+  text-align: center;
+}
+
 .result {
   max-width: 50rem;
   margin: 2rem auto;

@@ -10,7 +10,7 @@ const ResultsContainer = (props) => {
   const initialInvestment = props.userInputsList.currentSavings;
 
   if (props.userInputsList.length === 0) {
-    return <p>No investment calculated yet.</p>;
+    return <p className="resultNone">No investment calculated yet.</p>;
   } else {
     for (let i = 0; i < duration; i++) {
       const yearlyInterest =
